@@ -11,7 +11,7 @@ set loop=0
 
 ::you can modify parameters
 ::from here
-set maxloop=10
+set maxloop=24
 set interval=5
 set diskletter=P
 ::to here
