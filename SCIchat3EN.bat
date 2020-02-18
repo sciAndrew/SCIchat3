@@ -5,27 +5,27 @@ set id=%RANDOM%
 set id=%RANDOM%
 set loop=0
 
-::maxloop - ile lini zostanie wyswietlonych
-::interval - jak czesto wiadomosci beda pobierane z serwera, im czesciej tym mniejsza szansa na przegapienie wiadomosci ale wieksze uzycie serwera (tak czy siak nie powinno sprawiac problemow, mysi byc wiecej niz 0)
-::diskletter - litera dysku przez ktury ma dzialac czat
+::maxloop defines how many lines will be shown
+::interval defines how often message will be checked, the lower the less chance of missing one, but more load on the server (should not cause problems anyways, keep above 0)
+::diskletter is the letter of the shared drive
 
-::mozesz zmieniac ustawienia
-::od tutaj
+::you can change settings
+::from here
 set maxloop=24
 set interval=5
 set diskletter=P
-::do tutaj
+::to here
 
 :setloop
 set /A loop=%loop%+1
 set m%loop%=LINE
 if %loop% lss %maxloop% ( goto setloop )
 set messagein=-
-set /p user=Nazwa uzytkownika: 
-choice /C TN /M "Czy chcesz sie polonczyc z pokojem publicznym? T jesli tak, N aby podac nazwe pokoju"
-if %ERRORLEVEL%==2 ( set /p room=Nazwa pokoju: ) else ( set room=Public)
+set /p user=Username: 
+choice /C TN /M "Do you want to connect to the public room? Y if yes, N to give the room name"
+if %ERRORLEVEL%==2 ( set /p room=Room name: ) else ( set room=Public)
 
-echo wiadomosci mogo miec max 90 znakow i nie mogo zaczynac sie malym x
+echo messages can only be up to 90 characters long and can't start with lowercase x
 
 :start
 
